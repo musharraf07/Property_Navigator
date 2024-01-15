@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 // const mongoose = require("mongoose");
-
+import userRouter from "./routes/user.routes.js";
 dotenv.config();
 const mongo = process.env.MONGO;
 mongoose.connect(mongo, {});
@@ -22,3 +22,5 @@ db.once("open", () => {
   });
 });
 const app = express();
+
+app.use("/api/user", userRouter);
