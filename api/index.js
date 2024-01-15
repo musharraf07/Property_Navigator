@@ -14,7 +14,7 @@ db.on("error", (error) => {
 });
 
 db.once("open", () => {
-  console.log(`Database is connected  on port ${mongo}`);
+  console.log(`Monogo Database is connected  on port ${mongo}`);
 
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
