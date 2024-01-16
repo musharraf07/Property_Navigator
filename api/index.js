@@ -10,6 +10,18 @@ mongoose.connect(mongo, {});
 
 const app = express();
 app.use(express.json());
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server error";
+
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
+});
+
 const db = mongoose.connection;
 db.on("error", (error) => {
   console.error("MongoDB connection error:", error);

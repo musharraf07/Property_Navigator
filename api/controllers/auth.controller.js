@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
   // it is the response we get from browser
   //   console.log(req.body);
   const { username, email, password } = req.body;
@@ -10,6 +10,6 @@ export const signup = async (req, res) => {
     await newUser.save();
     res.status(200).json("user created successfully!");
   } catch (error) {
-    res.status(500).json(error.message);
+    next(error);
   }
 };
