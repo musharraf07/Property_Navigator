@@ -4,12 +4,14 @@ import dotenv from "dotenv";
 // const mongoose = require("mongoose");
 import userRouter from "./routes/user.routes.js";
 import authRouter from "./routes/auth.route.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 const mongo = process.env.MONGO;
 mongoose.connect(mongo, {});
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
@@ -38,8 +40,6 @@ db.once("open", () => {
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
-
-
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
