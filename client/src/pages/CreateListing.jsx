@@ -62,7 +62,7 @@ export default function CreateListing() {
                 id="bedrooms"
                 min="1"
                 max="10"
-                value="5"
+                value="1"
                 required
                 className="p-3 border border-gray-300 rounded-lg"
               />
@@ -74,7 +74,7 @@ export default function CreateListing() {
                 id="bathrooms"
                 min="1"
                 max="10"
-                value="4"
+                value="1"
                 required
                 className="p-3 border border-gray-300 rounded-lg"
               />
@@ -87,6 +87,7 @@ export default function CreateListing() {
                 min="1"
                 max="10"
                 required
+                value="0"
                 className="p-3 border border-gray-300 rounded-lg"
               />
 
@@ -100,6 +101,7 @@ export default function CreateListing() {
                 type="Number"
                 id="dicountprice"
                 min="1"
+                value="0"
                 max="10"
                 required
                 className="p-3 border border-gray-300 rounded-lg"
