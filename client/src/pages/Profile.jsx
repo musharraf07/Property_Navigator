@@ -142,7 +142,7 @@ export default function Profile() {
   const handleListingDelete = async (listingId) => {
     try {
       const res = await fetch(`/api/listing/delete/${listingId}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       const data = await res.json();
       if (data.success === false) {
@@ -212,6 +212,7 @@ export default function Profile() {
         ></input>
 
         <button
+        id="update-btn"
           disabled={loading}
           className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
@@ -234,7 +235,9 @@ export default function Profile() {
           {" "}
           Delete account
         </span>
-        <span onClick={handleSignOut} className="text-red-700 cursor-pointer">
+        <span 
+        id='signout-btn'
+        onClick={handleSignOut} className="text-red-700 cursor-pointer">
           Sign out
         </span>
       </div>
@@ -242,7 +245,11 @@ export default function Profile() {
       <p className="text-green-700 mt-5">
         {updateSuccess ? "User is updated successfully!" : ""}
       </p>
-      <button className="text-green-700 w-full " onClick={handleShowListings}>
+      <button
+        id="show-lisitngs"
+        className="text-green-700 w-full "
+        onClick={handleShowListings}
+      >
         Show Listings
       </button>
 
@@ -275,9 +282,19 @@ export default function Profile() {
               </Link>
 
               <div className="flex flex-col item-center">
-                <button className="text-red-700 uppercase"  onClick={() => handleListingDelete(listing._id)}>Delete</button>
-                  <Link to={`/update-listing/${listing._id}`}>
-                <button className="text-green-700 uppercase" >Edit</button>
+                <button
+                  className="text-red-700 uppercase"
+                  onClick={() => handleListingDelete(listing._id)}
+                >
+                  Delete
+                </button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button
+                    id="edit-lisitng"
+                    className="text-green-700 uppercase"
+                  >
+                    Edit
+                  </button>
                 </Link>
               </div>
             </div>

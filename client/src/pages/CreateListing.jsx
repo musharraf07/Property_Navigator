@@ -19,9 +19,9 @@ export default function CreateListing() {
     description: "",
     address: "",
     type: "rent",
-    bedrooms: 1,
-    bathrooms: 1,
-    regularPrice: 1000,
+    bedrooms: 0,
+    bathrooms: 0,
+    regularPrice: 0,
     discountedPrice: 0,
     offer: false,
     parking: false,
@@ -300,8 +300,8 @@ export default function CreateListing() {
                 />
                 <div className="flex flex-col items-center">
                   <p>Discounted price</p>
-                  {formData.type === 'rent' && (
-                    <span className='text-xs'>(₹ / month)</span>
+                  {formData.type === "rent" && (
+                    <span className="text-xs">(₹ / month)</span>
                   )}
                 </div>
               </div>
@@ -325,6 +325,7 @@ export default function CreateListing() {
               multiple
             />
             <button
+              id="upload-btn"
               type="button"
               disabled={uploading}
               onClick={handleImageSubmit}
@@ -357,6 +358,7 @@ export default function CreateListing() {
               </div>
             ))}
           <button
+            id="submit-btn"
             disabled={loading || uploading}
             className="p-3 bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
           >
