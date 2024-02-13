@@ -56,10 +56,11 @@ export default function Dashusers() {
     scrollbar scrollbar-track-slate-100 
     scrollbar-thumb-slate-300 max-w-6xl w-full mx-auto"
     >
+      <h1 className="text-3xl font-semibold text-center my-7">User Details</h1>
       {currentUser.isAdmin && users.length > 0 ? (
         <>
           <Table hoverable className="shadow-md">
-            <Table.Head className="bg-slate-300 text-xl">
+            <Table.Head className="bg-gray-700 text-white text-xl">
               <Table.HeadCell>Date created</Table.HeadCell>
               <Table.HeadCell>Username</Table.HeadCell>
               <Table.HeadCell>email</Table.HeadCell>

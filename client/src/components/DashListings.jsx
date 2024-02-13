@@ -63,10 +63,11 @@ export default function DashListings() {
     scrollbar scrollbar-track-slate-100 
     scrollbar-thumb-slate-300 max-w-6xl w-full mx-auto"
     >
+      <h1 className="text-3xl font-semibold text-center my-7">Property Listings</h1>
       {currentUser.isAdmin && userListings.length > 0 ? (
         <>
           <Table hoverable className="shadow-md">
-            <Table.Head className="bg-slate-300 text-xl">
+            <Table.Head className="bg-gray-700 text-white text-xl">
               <Table.HeadCell>Date updated</Table.HeadCell>
               <Table.HeadCell>Property Name</Table.HeadCell>
               <Table.HeadCell>Property Address</Table.HeadCell>
@@ -117,7 +118,7 @@ export default function DashListings() {
         <Modal.Body>
           <div className="text-center py-5">
             <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
-            <h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
+            <h3 className="mb-5 text-lg bg-gray-700 text-white">
               Are you sure you want to delete this lisiting?
             </h3>
             <div className="flex justify-center gap-4">
