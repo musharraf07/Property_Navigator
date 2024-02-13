@@ -35,12 +35,14 @@ export default function Header() {
           className="bg-slate-100 p-3 rounded-lg flex items-center "
         >
           <input
+            style={{ outline: "none" }}
             type="text"
             placeholder="Search..."
             className="bg-transparent focus:outline-none w-24 sm:w-64"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+
           <button>
             <FaSearch className="text-slate-600"></FaSearch>
           </button>
@@ -57,12 +59,12 @@ export default function Header() {
             </li>
           </Link>
 
-          <Link to="/profile">
+          <Link to={"/dashboard?tab=profile"}>
             {currentUser ? (
               <img
-                className='rounded-full h-7 w-7 object-cover'
+                className="rounded-full h-7 w-7 object-cover"
                 src={currentUser.avatar}
-                alt='profile'
+                alt="profile"
               />
             ) : (
               <li className=" text-slate-700 hover:underline"> Sign in</li>

@@ -49,6 +49,17 @@ export const deleteUser = async (req, res, next) => {
   }
 };
 
+// deleteUserbyAdmin
+
+export const deleteUserbyAdmin = async (req, res, next) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json("User has been deleted!");
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getUserListings = async (req, res, next) => {
   if (req.user.id === req.params.id) {
     try {
@@ -71,6 +82,23 @@ export const getUser = async (req, res, next) => {
     const { password: pass, ...rest } = user._doc;
 
     res.status(200).json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getAllUser = async (req, res, next) => {
+  try {
+    const users = await User.find();
+
+    if (!users) return next(errorHandler(404, "Users not found!"));
+
+    const sanitizedUsers = users.map((user) => {
+      const { password: pass, ...rest } = user._doc;
+      return rest;
+    });
+
+    res.status(200).json(sanitizedUsers);
   } catch (error) {
     next(error);
   }

@@ -50,6 +50,7 @@ export const updateListing = async (req, res, next) => {
   }
 };
 
+// get lisitng by id
 export const getListing = async (req, res, next) => {
   try {
     const listing = await Listing.findById(req.params.id);
@@ -62,6 +63,7 @@ export const getListing = async (req, res, next) => {
   }
 };
 
+// get all listings
 export const getListings = async (req, res, next) => {
   try {
     const limit = parseInt(req.query.limit) || 9;
@@ -107,6 +109,19 @@ export const getListings = async (req, res, next) => {
       .skip(startIndex);
 
     return res.status(200).json(listings);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// delete by admin
+export const deleteListingByAdmin = async (req, res, next) => {
+  // if (!req.user.isAdmin || req.user.id !== req.params.id) {
+  //   return next(errorHandler(403, "You are not allowed to delete this post"));
+  // }
+  try {
+    await Listing.findByIdAndDelete(req.params.id);
+    res.status(200).json("The Listing has been deleted");
   } catch (error) {
     next(error);
   }
