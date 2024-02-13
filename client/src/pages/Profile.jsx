@@ -121,6 +121,8 @@ export default function Profile() {
     } catch (error) {
       dispatch(deleteUserFailure(data.message));
     }
+    // window.localStorage.clear();
+    // window.location.href = "./sign-in";
   };
 
   const handleShowListings = async () => {
@@ -212,7 +214,7 @@ export default function Profile() {
         ></input>
 
         <button
-        id="update-btn"
+          id="update-btn"
           disabled={loading}
           className="bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80"
         >
@@ -235,9 +237,11 @@ export default function Profile() {
           {" "}
           Delete account
         </span>
-        <span 
-        id='signout-btn'
-        onClick={handleSignOut} className="text-red-700 cursor-pointer">
+        <span
+          id="signout-btn"
+          onClick={handleSignOut}
+          className="text-red-700 cursor-pointer"
+        >
           Sign out
         </span>
       </div>
