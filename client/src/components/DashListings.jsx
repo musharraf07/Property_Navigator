@@ -61,9 +61,11 @@ export default function DashListings() {
     <div
       className="table-auto overflow-x-scroll md:mx-auto p-3 
     scrollbar scrollbar-track-slate-100 
-    scrollbar-thumb-slate-300 max-w-6xl w-full mx-auto"
+    scrollbar-thumb-slate-300 max-w-4xl w-full mx-auto"
     >
-      <h1 className="text-3xl font-semibold text-center my-7">Property Listings</h1>
+      <h1 className="text-3xl font-semibold text-center my-7">
+        Property Listings
+      </h1>
       {currentUser.isAdmin && userListings.length > 0 ? (
         <>
           <Table hoverable className="shadow-md">
@@ -76,7 +78,7 @@ export default function DashListings() {
 
             {userListings.map((listing) => (
               <Table.Body className="divide-y text-center py-4 text-xl">
-                <Table.Row className="bg-white">
+                <Table.Row key={listing._id} className="bg-white">
                   <Table.Cell>
                     {new Date(listing.updatedAt).toLocaleDateString()}
                   </Table.Cell>

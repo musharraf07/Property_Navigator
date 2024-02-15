@@ -12,6 +12,9 @@ import Listing from "./pages/Listing";
 import Search from "./pages/Search";
 import Dashboard from "./pages/Dashboard";
 
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -23,8 +26,11 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
         <Route path="/listing/:listingId" element={<Listing />} />
+        <Route path="/contact" element={<Contact />} />
+       
         <Route element={<RoutePrivate />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-listing" element={<CreateListing />} />
           <Route path="/update-listing/:listingId" element={<EditListing />} />

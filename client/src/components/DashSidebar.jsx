@@ -1,5 +1,6 @@
 import { Sidebar } from "flowbite-react";
-
+import { FaPhoneAlt } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 import {
   HiUser,
   HiArrowSmRight,
@@ -90,10 +91,24 @@ export default function DashSidebar() {
               </Sidebar.Item>
             </Link>
           )}
+          {currentUser.isAdmin && (
+            <Link to="/dashboard?tab=contactdetails">
+              <Sidebar.Item
+                active={tab === "contactdetails"}
+                icon={FaPhoneAlt} // Changed icon to FaPhoneAlt
+                as="div"
+                className={`text-black font-semibold ${
+                  tab === "contactdetails" ? "bg-gray-700 text-white" : ""
+                }`}
+              >
+                Contact Details
+              </Sidebar.Item>
+            </Link>
+          )}
 
           <Sidebar.Item
-            icon={HiArrowSmRight}
-            className="cursor-pointer"
+            icon={FaSignOutAlt} // Changed icon to FaSignOutAlt
+            className="cursor-pointer text-black font-semibold"
             onClick={handleSignOut}
           >
             Sign Out

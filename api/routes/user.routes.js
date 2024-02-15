@@ -6,7 +6,8 @@ import {
   updateUser,
   getUser,
   getAllUser,
-  deleteUserbyAdmin
+  deleteUserbyAdmin,
+  contactus,
 } from "../controllers/user.controller.js";
 import { verifyToken } from "../utils/verifyUser.js";
 
@@ -20,5 +21,6 @@ router.get("/:id", verifyToken, getUser);
 router.get("/getallusers/:id", verifyToken, getAllUser);
 router.delete("/deleteusers/:id", deleteUserbyAdmin);
 
+router.post("/contactus", contactus);
 
 export default router;

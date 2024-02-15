@@ -58,16 +58,31 @@ export default function Header() {
               About
             </li>
           </Link>
+          <Link to="/blogs">
+            <li className="hidden sm:inline text-slate-700 hover:underline">
+              Blogs
+            </li>
+          </Link>
+          <Link to="/contact">
+            <li className="hidden sm:inline text-slate-700 hover:underline">
+              Contactus
+            </li>
+          </Link>
 
-          <Link to={"/dashboard?tab=profile"}>
+          <Link to={"/dashboard?tab=profile"} className="flex items-center">
             {currentUser ? (
-              <img
-                className="rounded-full h-7 w-7 object-cover"
-                src={currentUser.avatar}
-                alt="profile"
-              />
+              <>
+                
+                <img
+                  className="rounded-full h-7 w-7 object-cover"
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              </>
             ) : (
-              <li className=" text-slate-700 hover:underline"> Sign in</li>
+              <li className="text-slate-700 hover:underline">
+                Signin/Register
+              </li>
             )}
           </Link>
         </ul>

@@ -1,3 +1,4 @@
+import Contact from "../models/contact.model.js";
 import Listing from "../models/listing.model.js";
 import { errorHandler } from "../utils/error.js";
 
@@ -122,6 +123,34 @@ export const deleteListingByAdmin = async (req, res, next) => {
   try {
     await Listing.findByIdAndDelete(req.params.id);
     res.status(200).json("The Listing has been deleted");
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getContacts = async (req, res, next) => {
+  try {
+    // Fetch all contact details from the database
+    const contactDetail = await Contact.find();
+
+    // If there are no contact details, return an empty array
+    if (!contactDetail) {
+      return res.status(200).json({ success: true, data: [] });
+    }
+
+    // If contact details are found, return them
+    res.status(200).json({ success: true, data: contactDetail });
+  } catch (error) {
+    // If an error occurs, pass it to the error handling middleware
+    next(error);
+  }
+};
+
+// delete by admin
+export const deletecontactByAmin = async (req, res, next) => {
+  try {
+    await Contact.findByIdAndDelete(req.params.id);
+    res.status(200).json("The Contact has been deleted");
   } catch (error) {
     next(error);
   }

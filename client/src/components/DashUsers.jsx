@@ -70,7 +70,7 @@ export default function Dashusers() {
 
             {users.map((users) => (
               <Table.Body className="divide-y text-center py-4 text-xl">
-                <Table.Row className="bg-white">
+                <Table.Row key={users._id} className="bg-white">
                   <Table.Cell>
                     {new Date(users.createdAt).toLocaleDateString()}
                   </Table.Cell>

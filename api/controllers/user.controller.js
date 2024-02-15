@@ -2,6 +2,7 @@ import { errorHandler } from "../utils/error.js";
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import Listing from "../models/listing.model.js";
+import Contact from "../models/contact.model.js";
 export const test = (req, res) => {
   res.json({
     message: "API route is working",
@@ -86,7 +87,7 @@ export const getUser = async (req, res, next) => {
     next(error);
   }
 };
-
+// get all users by Admin
 export const getAllUser = async (req, res, next) => {
   try {
     const users = await User.find();
@@ -99,6 +100,30 @@ export const getAllUser = async (req, res, next) => {
     });
 
     res.status(200).json(sanitizedUsers);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const contactus = async (req, res, next) => {
+  try {
+    const { name, email, message } = req.body;
+
+    // Create a new contact instance
+    const newContact = new Contact({
+      name,
+      email,
+      message,
+    });
+
+    // Save the contact information to the database
+    await newContact.save();
+
+    // Respond with success message
+    res.status(200).json({
+      success: true,
+      message: "Contact information submitted successfully",
+    });
   } catch (error) {
     next(error);
   }
