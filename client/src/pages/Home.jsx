@@ -5,13 +5,15 @@ import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import ListingItem from "../components/ListingItem";
+import PostCard from "../components/PostCard";
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
+  const [posts, setPosts] = useState([]);
   SwiperCore.use([Navigation]);
-  console.log(rentListings);
+  // console.log(rentListings);
   useEffect(() => {
     const fetchOfferListings = async () => {
       try {
@@ -45,6 +47,13 @@ export default function Home() {
       }
     };
     fetchOfferListings();
+
+    const fetchPosts = async () => {
+      const res = await fetch("/api/post/getPosts");
+      const data = await res.json();
+      setPosts(data.posts);
+    };
+    fetchPosts();
   }, []);
   return (
     <div>
@@ -69,6 +78,7 @@ export default function Home() {
         </Link>
       </div>
 
+      {/* swiper */}
       <Swiper navigation>
         {offerListings &&
           offerListings.length > 0 &&
@@ -85,14 +95,13 @@ export default function Home() {
             </SwiperSlide>
           ))}
       </Swiper>
-
       {/* listing results for offer, sale and rent */}
 
       <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 my-10">
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-3xl font-semibold text-slate-600">
                 Recent offers
               </h2>
               <Link
@@ -112,7 +121,7 @@ export default function Home() {
         {rentListings && rentListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-4xl font-bold text-slate-600 text-center">
                 Recent places for rent
               </h2>
               <Link
@@ -132,7 +141,7 @@ export default function Home() {
         {saleListings && saleListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-4xl font-bold text-slate-600 text-center">
                 Recent places for sale
               </h2>
               <Link
@@ -145,6 +154,27 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               {saleListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="max-w-6xl mx-auto p-3 flex flex-col gap-8 py-7">
+        {posts && posts.length > 0 && (
+          <div className="flex flex-col gap-6">
+            <h2 className="text-4xl font-bold text-slate-600 text-center">
+              Recent Blogs
+            </h2>
+            <Link
+              className="text-sm text-blue-800 hover:underline"
+              to={"/blogs"}
+            >
+              View all posts
+            </Link>
+            <div className="flex flex-wrap gap-4">
+              {posts.map((post) => (
+                <PostCard key={post._id} post={post} />
               ))}
             </div>
           </div>

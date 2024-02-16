@@ -31,7 +31,7 @@ export default function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/listing/:listingId" element={<Listing />} />
         <Route path="/contact" element={<Contact />} />
-
+        <Route path="/post/:postSlug" element={<PostPage />} />
         <Route element={<RoutePrivate />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/blogs" element={<Blogs />} />
@@ -39,12 +39,9 @@ export default function App() {
           <Route path="/create-listing" element={<CreateListing />} />
           <Route path="/update-listing/:listingId" element={<EditListing />} />
         </Route>
-
         <Route element={<AdminRoutePrivate />}>
           <Route path="/create-post" element={<CreatePost />} />
-          <Route path='/update-post/:postId' element={<UpdatePosts />} />
         </Route>
-        <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
     </BrowserRouter>
   );
