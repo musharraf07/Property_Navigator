@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Header from "./components/Header";
 import Profile from "./pages/Profile";
 import RoutePrivate from "./components/RoutePrivate";
+import AdminRoutePrivate from "./components/AdminRoutePrivate";
 import CreateListing from "./pages/CreateListing";
 import EditListing from "./pages/EditListing";
 import Listing from "./pages/Listing";
@@ -14,6 +15,9 @@ import Dashboard from "./pages/Dashboard";
 
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
+import CreatePost from "./pages/CreatePost";
+import UpdatePosts from "./pages/UpdatePosts";
+import PostPage from "./pages/PostPage";
 
 export default function App() {
   return (
@@ -27,7 +31,7 @@ export default function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/listing/:listingId" element={<Listing />} />
         <Route path="/contact" element={<Contact />} />
-       
+
         <Route element={<RoutePrivate />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/blogs" element={<Blogs />} />
@@ -35,6 +39,12 @@ export default function App() {
           <Route path="/create-listing" element={<CreateListing />} />
           <Route path="/update-listing/:listingId" element={<EditListing />} />
         </Route>
+
+        <Route element={<AdminRoutePrivate />}>
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path='/update-post/:postId' element={<UpdatePosts />} />
+        </Route>
+        <Route path="/post/:postSlug" element={<PostPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -59,28 +59,39 @@ export default function Dashusers() {
       <h1 className="text-3xl font-semibold text-center my-7">User Details</h1>
       {currentUser.isAdmin && users.length > 0 ? (
         <>
-          <Table hoverable className="shadow-md">
+          <Table hoverable className="shadow-md border-collapse">
             <Table.Head className="bg-gray-700 text-white text-xl">
-              <Table.HeadCell>Date created</Table.HeadCell>
-              <Table.HeadCell>Username</Table.HeadCell>
-              <Table.HeadCell>email</Table.HeadCell>
-              <Table.HeadCell>Admin</Table.HeadCell>
-              <Table.HeadCell>Delete user</Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400">
+                Date created
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400">
+                Username
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400">
+                email
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400">
+                {" "}
+                Admin
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400">
+                Delete user
+              </Table.HeadCell>
             </Table.Head>
 
             {users.map((users) => (
               <Table.Body className="divide-y text-center py-4 text-xl">
                 <Table.Row key={users._id} className="bg-white">
-                  <Table.Cell>
+                  <Table.Cell className="border border-gray-400 whitespace-normal">
                     {new Date(users.createdAt).toLocaleDateString()}
                   </Table.Cell>
-                  <Table.Cell className="font-medium text-gray-700">
+                  <Table.Cell className="font-medium text-gray-700 border border-gray-400 whitespace-normal">
                     {users.username}
                   </Table.Cell>
-                  <Table.Cell className="font-medium text-gray-700">
+                  <Table.Cell className="font-medium text-gray-700 border border-gray-400 whitespace-normal">
                     {users.email}
                   </Table.Cell>
-                  <Table.Cell className="text-center flex justify-center items-center">
+                  <Table.Cell className="text-center flex justify-center items-center border border-gray-400 pb-6">
                     {users.isAdmin ? (
                       <FaCheck className="text-green-500" />
                     ) : (
@@ -88,13 +99,13 @@ export default function Dashusers() {
                     )}
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell className="border border-gray-400 whitespace-normal ">
                     <span
                       onClick={() => {
                         setShowModal(true);
                         setuserIdToDelete(users._id);
                       }}
-                      className="font-medium text-red-500 hover:underline cursor-pointer"
+                      className="font-medium text-red-500 hover:underline cursor-pointer "
                     >
                       {" "}
                       Delete

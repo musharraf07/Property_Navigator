@@ -63,6 +63,11 @@ export default function Header() {
               Blogs
             </li>
           </Link>
+          <Link to="/search">
+            <li className="hidden sm:inline text-slate-700 hover:underline">
+              Listings
+            </li>
+          </Link>
           <Link to="/contact">
             <li className="hidden sm:inline text-slate-700 hover:underline">
               Contactus
@@ -72,7 +77,6 @@ export default function Header() {
           <Link to={"/dashboard?tab=profile"} className="flex items-center">
             {currentUser ? (
               <>
-                
                 <img
                   className="rounded-full h-7 w-7 object-cover"
                   src={currentUser.avatar}

@@ -68,27 +68,38 @@ export default function DashListings() {
       </h1>
       {currentUser.isAdmin && userListings.length > 0 ? (
         <>
-          <Table hoverable className="shadow-md">
+          <Table hoverable className="shadow-md border border-gray-300">
             <Table.Head className="bg-gray-700 text-white text-xl">
-              <Table.HeadCell>Date updated</Table.HeadCell>
-              <Table.HeadCell>Property Name</Table.HeadCell>
-              <Table.HeadCell>Property Address</Table.HeadCell>
-              <Table.HeadCell>Delete Property</Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400 px-4 py-2">
+                Date updated
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400 px-4 py-2">
+                Property Name
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400 px-4 py-2">
+                Property Address
+              </Table.HeadCell>
+              <Table.HeadCell className="border border-gray-400 px-4 py-2">
+                Delete Property
+              </Table.HeadCell>
             </Table.Head>
 
             {userListings.map((listing) => (
-              <Table.Body className="divide-y text-center py-4 text-xl">
-                <Table.Row key={listing._id} className="bg-white">
-                  <Table.Cell>
+              <Table.Body
+                className="divide-y text-center py-4 text-xl"
+                key={listing._id}
+              >
+                <Table.Row className="bg-white">
+                  <Table.Cell className="border border-gray-400 px-4 py-2">
                     {new Date(listing.updatedAt).toLocaleDateString()}
                   </Table.Cell>
-                  <Table.Cell className="font-medium text-gray-700">
+                  <Table.Cell className="border border-gray-400 px-4 py-2 font-medium text-gray-700">
                     {listing.name}
                   </Table.Cell>
-                  <Table.Cell className="font-medium text-gray-700">
+                  <Table.Cell className="border border-gray-400 px-4 py-2 font-medium text-gray-700">
                     {listing.address}
                   </Table.Cell>
-                  <Table.Cell>
+                  <Table.Cell className="border border-gray-400 px-4 py-2">
                     <span
                       onClick={() => {
                         setShowModal(true);
@@ -96,7 +107,6 @@ export default function DashListings() {
                       }}
                       className="font-medium text-red-500 hover:underline cursor-pointer"
                     >
-                      {" "}
                       Delete
                     </span>
                   </Table.Cell>

@@ -227,6 +227,15 @@ export default function DashProfile() {
         >
           Create listing
         </Link>
+
+        {currentUser.isAdmin && (
+        <Link
+          className="bg-green-700 p-3 text-white uppercase rounded-lg text-center hover:opacity-95"
+          to={"/create-post"}
+        >
+          Create a Post
+        </Link>
+        )}
       </form>
 
       <div className="flex justify-between mt-5">

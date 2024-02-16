@@ -8,6 +8,7 @@ import {
   deleteListingByAdmin,
   getContacts,
   deletecontactByAmin,
+
 } from "../controllers/listing.controller.js";
 import { verifyToken } from "../utils/verifyUser.js";
 
@@ -21,4 +22,5 @@ router.get("/get/:id", getListing);
 router.get("/get", getListings);
 router.get("/getcontacts", getContacts);
 router.delete("/deletecontact/:id", deletecontactByAmin);
+
 export default router;

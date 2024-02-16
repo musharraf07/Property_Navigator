@@ -56,28 +56,40 @@ export default function ContactDetails() {
         Contact Details
       </h1>
       {contactDetails.length > 0 ? (
-        <Table hoverable className="shadow-md">
+        <Table hoverable className="shadow-md border border-gray-300">
           <Table.Head className="bg-gray-700 text-white text-xl">
-            <Table.HeadCell>Name</Table.HeadCell>
-            <Table.HeadCell>Email</Table.HeadCell>
-            <Table.HeadCell>Message</Table.HeadCell>
-            <Table.HeadCell>Date</Table.HeadCell>
-            <Table.HeadCell>Delete</Table.HeadCell>
+            <Table.HeadCell className="border border-gray-400 px-4 py-2">
+              Date
+            </Table.HeadCell>
+            <Table.HeadCell className="border border-gray-400 px-4 py-2">
+              Name
+            </Table.HeadCell>
+            <Table.HeadCell className="border border-gray-400 px-4 py-2">
+              Email
+            </Table.HeadCell>
+            <Table.HeadCell className="border border-gray-400 px-4 py-2">
+              Message
+            </Table.HeadCell>
+            <Table.HeadCell className="border border-gray-400 px-4 py-2">
+              Delete
+            </Table.HeadCell>
           </Table.Head>
           <Table.Body className="divide-y text-center py-4 text-xl">
             {contactDetails.map((contact) => (
               <Table.Row key={contact._id} className="bg-white">
-                <Table.Cell className="font-medium text-gray-700">
-                  {contact.name}
-                </Table.Cell>
-                <Table.Cell className="font-medium text-gray-700">
-                  {contact.email}
-                </Table.Cell>
-                <Table.Cell>{contact.message}</Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="border border-gray-400 px-4 py-2">
                   {new Date(contact.createdAt).toLocaleDateString()}
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="border border-gray-400 px-4 py-2 font-medium text-gray-700">
+                  {contact.name}
+                </Table.Cell>
+                <Table.Cell className="border border-gray-400 px-4 py-2 font-medium text-gray-700">
+                  {contact.email}
+                </Table.Cell>
+                <Table.Cell className="border border-gray-400 px-4 py-2">
+                  {contact.message}
+                </Table.Cell>
+                <Table.Cell className="border border-gray-400 px-4 py-2">
                   <span
                     onClick={() => {
                       setShowModal(true);
@@ -85,7 +97,6 @@ export default function ContactDetails() {
                     }}
                     className="font-medium text-red-500 hover:underline cursor-pointer"
                   >
-                    {" "}
                     Delete
                   </span>
                 </Table.Cell>
