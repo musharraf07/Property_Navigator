@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-// const mongoose = require("mongoose");
 import userRouter from "./api/routes/user.routes.js";
 import authRouter from "./api/routes/auth.route.js";
 import listingRouter from "./api/routes/listing.route.js";

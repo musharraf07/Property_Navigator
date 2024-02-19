@@ -117,9 +117,6 @@ export const getListings = async (req, res, next) => {
 
 // delete by admin
 export const deleteListingByAdmin = async (req, res, next) => {
-  // if (!req.user.isAdmin || req.user.id !== req.params.id) {
-  //   return next(errorHandler(403, "You are not allowed to delete this post"));
-  // }
   try {
     await Listing.findByIdAndDelete(req.params.id);
     res.status(200).json("The Listing has been deleted");
@@ -130,18 +127,12 @@ export const deleteListingByAdmin = async (req, res, next) => {
 
 export const getContacts = async (req, res, next) => {
   try {
-    // Fetch all contact details from the database
     const contactDetail = await Contact.find();
-
-    // If there are no contact details, return an empty array
     if (!contactDetail) {
       return res.status(200).json({ success: true, data: [] });
     }
-
-    // If contact details are found, return them
     res.status(200).json({ success: true, data: contactDetail });
   } catch (error) {
-    // If an error occurs, pass it to the error handling middleware
     next(error);
   }
 };

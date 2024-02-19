@@ -50,12 +50,14 @@ export default function SignUp() {
           className="border p-3 rounded-lg"
           id="username"
           onChange={handleChange}
+          // required
         />
         <input
           type="email"
           placeholder="email"
           className="border p-3 rounded-lg"
           id="email"
+          // required
           onChange={handleChange}
         />
         <input
@@ -63,6 +65,7 @@ export default function SignUp() {
           placeholder="password"
           className="border p-3 rounded-lg"
           id="password"
+          // required
           onChange={handleChange}
           style={{ backgroundColor: "white" }}
         />

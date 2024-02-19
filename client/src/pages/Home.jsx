@@ -101,7 +101,7 @@ export default function Home() {
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-3xl font-semibold text-slate-600">
+              <h2 className="text-4xl font-bold text-slate-600 text-center">
                 Recent offers
               </h2>
               <Link
